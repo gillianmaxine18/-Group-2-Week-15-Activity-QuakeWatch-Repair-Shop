@@ -139,7 +139,7 @@ def split_by_contract(df):
             raise
         rejects = df.loc[df.index.isin(bad_idx)].copy()
         good = df.drop(index=bad_idx).copy()
-        log.warning("Rejected %d rows failing schema contract", len(rejects))
+        log.warning("integrate: rejected %d of %d rows failing schema contract", len(rejects), len(df))
         return good, rejects
     except Exception:
         log.exception("Whole-table schema validation failed in split_by_contract")
