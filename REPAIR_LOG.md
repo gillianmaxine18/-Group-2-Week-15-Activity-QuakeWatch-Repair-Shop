@@ -9,7 +9,7 @@ Study group: ______________________   Members: _________________________________
 | 1 | KeyError | `features_stage` used `t["depth"]`, but the column is `depth_km` (add file/line) | Changed to `t["depth_km"]` | `test_features.py::test_features_stage_runs`, `test_features.py::test_depth_classes` | @gillianmaxine18 (Gillian Maxine) | 
 | 2 | | | | | |
 | 3 | | | | | |
-| 4 | | | | | |
+| 4 | Events were matched to the wrong nearest city | quakewatch.py, nearest_city(), line 134; passed events["longitude"] and events["latitude"] into haversine_km() in reverse order | Swapped arguments to pass events["latitude"] first, then events["longitude"] | test_integrate.py::test_nearest_city *(verify exact test name in test_integrate.py)* | @kaycelyntigas (Kaycelyn Tigas) |
 | 5 | | | | | |
 | 6 | | | | | |
 
