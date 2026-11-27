@@ -15,8 +15,12 @@ Who did what
 - Defect 6 (silent validation, rejected rows): Elisha and Kaycelyn
 - Group tests (tests/test_group.py): parametrize test by Maxine, fake-API test by Hans,
   caplog test by Elisha, two-run pipeline test by Kaycelyn
-- Logging (WARNING on rejects, log.exception, logs/run.log in run.py): <ADD NAMES>
-- REPAIR_LOG.md: <ADD NAMES>
+- Logging (WARNING on rejects, log.exception, logs/run.log in run.py): 
+          - Hans: the log file setup in run.py, writing to logs/run.log.
+          - Elisha: the WARNING in split_by_contract when rows are rejected.
+          - Kaycelyn: log.exception in get_json and in the whole-table failure case.
+          - Maxine: check that the levels make sense.
+- REPAIR_LOG.md: written by all members for their own defects; compiled and finalized by Gillian Maxine
 
 Help used
 - Course materials and the supplied README, INCIDENTS.md and tests.
