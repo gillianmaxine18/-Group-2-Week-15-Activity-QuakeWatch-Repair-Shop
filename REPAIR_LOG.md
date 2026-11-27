@@ -6,7 +6,7 @@ Study group: ______________________   Members: _________________________________
 
 | # | Symptom (what was wrong for the user) | Cause (file, function, line; why it was wrong) | Fix (what you changed) | Test that now guards it | Fixed by |
 | --- | --- | --- | --- | --- | --- |
-| 1 | `features_stage` used `t["depth"]`, but the column is `depth_km` | `t["depth_km"]` | | | |
+| 1 | KeyError | `features_stage` used `t["depth"]`, but the column is `depth_km` (add file/line) | Changed to `t["depth_km"]` | `test_features.py::test_features_stage_runs`, `test_features.py::test_depth_classes` | @gillianmaxine18 (Gillian Maxine) | 
 | 2 | | | | | |
 | 3 | | | | | |
 | 4 | | | | | |
