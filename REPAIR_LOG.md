@@ -1,6 +1,6 @@
 # Repair log
 
-Study group: ______________________   Members: ______________________________________________
+Study group: Group 2   Members: Gillian Maxine Estilloso, Hans Adrian Laudato, Giana Elisha Tuplano, Kaycelyn Tigas
 
 ## Defects
 
@@ -17,17 +17,19 @@ Study group: ______________________   Members: _________________________________
 
 | Test name | Tool used (`parametrize`, fake API, `caplog`) | What it proves | Fails on the broken code? | Written by |
 | --- | --- | --- | --- | --- |
-| | | | | |
-| | | | | |
-| | | | | |
+| `test_mag_class_around_the_strong_boundary` | `@pytest.mark.parametrize` | Magnitudes `6.0` and `6.04` are classified as `"Strong"` rather than `"Moderate"` | Yes | Maxine |
+| `test_second_load_asks_only_for_newer_events` | `responses` (fake API) | Calling `load_new()` a second time queries `starttime` after the saved watermark rather than `FIRST_DAY` | Yes | Hans |
+| `test_rejected_rows_produce_a_warning` | `caplog` | Invalid rows (like `depth_km = -5.0`) are separated into rejects and trigger a `WARNING` log message | Yes | Elisha |
+| `test_two_runs_leave_no_duplicates` | Pipeline integration (`run_pipeline`) | Running the full pipeline twice adds `0` new rows on the second run and leaves no duplicate event IDs | Yes | Kaycelyn |
 
 ## Logging we added
 
 | Where (function) | Level | Message | Why this level |
 | --- | --- | --- | --- |
-| | | | |
-| | | | |
-| | | | |
+| `run.py` (`main` / file handler setup) | `INFO` | Pipeline stage progress and summary counts written to `logs/run.log` | `INFO` records normal operational milestones and execution summaries without cluttering output with debug noise |
+| `quakewatch.py` (`split_by_contract`) | `WARNING` | `integrate: rejected %d of %d rows failing schema contract` | `WARNING` flags unexpected bad records that were quarantined while allowing the rest of the pipeline to continue |
+| `quakewatch.py` (`get_json`) | `ERROR` / `EXCEPTION` | Logs HTTP/request exceptions with full stack trace before raising | `EXCEPTION` captures the full traceback when an external API call fails so network or endpoint errors can be diagnosed |
+| `quakewatch.py` (`split_by_contract` whole-table failure) | `ERROR` / `EXCEPTION` | Logs schema validation exception with stack trace if table-level contract fails | `EXCEPTION` provides full traceback diagnostics when a structural failure prevents row-level splitting |
 
 ## One thing we learned about debugging
 
