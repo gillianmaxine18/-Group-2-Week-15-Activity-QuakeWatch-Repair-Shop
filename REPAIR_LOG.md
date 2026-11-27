@@ -1,6 +1,7 @@
 # Repair log
 
-Study group: Group 2   Members: Gillian Maxine Estilloso, Hans Adrian Laudato, Giana Elisha Tuplano, Kaycelyn Tigas
+# Study group: Group 2  
+# Members: Gillian Maxine Estilloso, Hans Adrian Laudato, Giana Elisha Tuplano, Kaycelyn Tigas
 
 ## Defects
 
