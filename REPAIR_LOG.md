@@ -33,5 +33,4 @@ Members: Gillian Maxine Estilloso, Hans Adrian Laudato, Giana Elisha Tuplano, Ka
 | `quakewatch.py` (`split_by_contract` whole-table failure) | `ERROR` / `EXCEPTION` | Logs schema validation exception with stack trace if table-level contract fails | `EXCEPTION` provides full traceback diagnostics when a structural failure prevents row-level splitting |
 
 ## One thing we learned about debugging
-
-(two or three sentences)
+A pipeline running without crashing does not mean it is working correctly. Silent `try/except: pass` blocks, swapped coordinate arguments, and misapplied timezone methods produced corrupt outputs without raising a single error, showing us why writing targeted regression tests—including boundary checks, mocked API responses, and log assertions—is essential to catch silent bugs early and prove that fixes actually hold.
