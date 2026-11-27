@@ -1,0 +1,24 @@
+Group 2, Week 15 Activity: QuakeWatch Repair Shop (DSA 4153)
+
+Members
+- Gillian Maxine Estilloso
+- Hans Adrian Laudato
+- Giana Elisha Tuplano
+- Kaycelyn Tigas
+
+Who did what
+- Defect 1 (KeyError, depth vs depth_km): Gillian Maxine
+- Defect 2 (UTC to Manila time conversion): Hans
+- Defect 3 (magnitude class bin edge): Elisha
+- Defect 4 (swapped latitude/longitude in nearest_city): Kaycelyn
+- Defect 5 (duplicates on second run, watermark): Hans and Gillian Maxine
+- Defect 6 (silent validation, rejected rows): Elisha and Kaycelyn
+- Group tests (tests/test_group.py): parametrize test by Maxine, fake-API test by Hans,
+  caplog test by Elisha, two-run pipeline test by Kaycelyn
+- Logging (WARNING on rejects, log.exception, logs/run.log in run.py): <ADD NAMES>
+- REPAIR_LOG.md: <ADD NAMES>
+
+Help used
+- Course materials and the supplied README, INCIDENTS.md and tests.
+- AI tool: Claude (Anthropic), Gemini was used to review the repairs against the incident
+  reports, recheck the outputs. The group read and ran the final code and takes responsibility for it.
