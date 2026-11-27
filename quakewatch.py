@@ -30,7 +30,7 @@ AREA = {"minmagnitude": 5, "minlatitude": 4, "maxlatitude": 22,
         "minlongitude": 116, "maxlongitude": 130, "orderby": "time-asc", "format": "geojson"}
 FIRST_DAY, LAST_DAY = "2020-01-01", "2025-01-01"
 RAW, CLEAN, FEAT, FIGS = Path("data/raw"), Path("data/clean"), Path("data/features"), Path("figures")
-MAG_BINS = [4.95, 6.05, 6.95, 7.95, 10]
+MAG_BINS = [4.95, 5.95, 6.95, 7.95, 10]
 MAG_LABELS = ["Moderate", "Strong", "Major", "Great"]
 CALLS = {"n": 0}                      # counts every API call
 
@@ -47,9 +47,13 @@ def make_session():
 
 def get_json(session, path, **params):
     CALLS["n"] += 1
-    reply = session.get(BASE + path, params={**AREA, **params}, timeout=30)
-    reply.raise_for_status()
-    return reply.json()
+    try:
+        reply = session.get(BASE + path, params={**AREA, **params}, timeout=30)
+        reply.raise_for_status()
+        return reply.json()
+    except Exception:
+        log.exception("Request failed in get_json for %s", path)
+        raise
 
 
 def features_to_table(features):
@@ -121,13 +125,23 @@ CONTRACT = pa.DataFrameSchema({
 })
 
 
-def split_by_contract(raw):
-    """Return (good rows, rejected rows)."""
+def split_by_contract(df):
     try:
-        CONTRACT.validate(raw)
+        good = CONTRACT.validate(df, lazy=True)
+        rejects = df.iloc[0:0].copy()
+        return good, rejects
+    except pa.errors.SchemaErrors as err:
+        bad_idx = err.failure_cases["index"].dropna().unique()
+        if len(bad_idx) == 0:
+            log.exception("Whole-table schema validation failed in split_by_contract")
+            raise
+        rejects = df.loc[df.index.isin(bad_idx)].copy()
+        good = df.drop(index=bad_idx).copy()
+        log.warning("Rejected %d rows failing schema contract", len(rejects))
+        return good, rejects
     except Exception:
-        pass
-    return raw, raw.iloc[0:0]
+        log.exception("Whole-table schema validation failed in split_by_contract")
+        raise
 
 
 def haversine_km(lat1, lon1, lat2, lon2):
