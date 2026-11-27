@@ -1,0 +1,38 @@
+﻿============================= test session starts =============================
+platform win32 -- Python 3.12.10, pytest-9.2.0, pluggy-1.7.0 -- C:\Users\yanyan\Downloads\-Group-2-Week-15-Activity-QuakeWatch-Repair-Shop\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\yanyan\Downloads\-Group-2-Week-15-Activity-QuakeWatch-Repair-Shop
+plugins: typeguard-4.6.1
+collecting ... collected 29 items
+
+tests/test_acquire.py::test_first_load_gets_every_event PASSED           [  3%]
+tests/test_acquire.py::test_second_load_adds_nothing PASSED              [  6%]
+tests/test_acquire.py::test_ids_stay_unique_after_two_loads PASSED       [ 10%]
+tests/test_features.py::test_features_stage_runs PASSED                  [ 13%]
+tests/test_features.py::test_strongest_event_is_at_night_in_manila PASSED [ 17%]
+tests/test_features.py::test_mag_class_edges[5.0-Moderate] PASSED        [ 20%]
+tests/test_features.py::test_mag_class_edges[5.9-Moderate] PASSED        [ 24%]
+tests/test_features.py::test_mag_class_edges[6.0-Strong] PASSED          [ 27%]
+tests/test_features.py::test_mag_class_edges[6.9-Strong] PASSED          [ 31%]
+tests/test_features.py::test_mag_class_edges[7.0-Major] PASSED           [ 34%]
+tests/test_features.py::test_mag_class_edges[7.9-Major] PASSED           [ 37%]
+tests/test_features.py::test_mag_class_edges[8.0-Great] PASSED           [ 41%]
+tests/test_features.py::test_strong_or_above_count PASSED                [ 44%]
+tests/test_features.py::test_depth_classes PASSED                        [ 48%]
+tests/test_group.py::test_mag_class_around_the_strong_boundary[6.0-Strong] PASSED [ 51%]
+tests/test_group.py::test_mag_class_around_the_strong_boundary[6.04-Strong] PASSED [ 55%]
+tests/test_group.py::test_mag_class_around_the_strong_boundary[6.5-Strong] PASSED [ 58%]
+tests/test_group.py::test_mag_class_around_the_strong_boundary[5.9-Moderate] PASSED [ 62%]
+tests/test_group.py::test_mag_class_around_the_strong_boundary[6.9-Strong] PASSED [ 65%]
+tests/test_group.py::test_mag_class_around_the_strong_boundary[7.0-Major] PASSED [ 68%]
+tests/test_group.py::test_second_load_asks_only_for_newer_events PASSED  [ 72%]
+tests/test_group.py::test_rejected_rows_produce_a_warning PASSED         [ 75%]
+tests/test_group.py::test_two_runs_leave_no_duplicates PASSED            [ 79%]
+tests/test_integrate.py::test_contract_accepts_the_real_data PASSED      [ 82%]
+tests/test_integrate.py::test_nearest_city_of_known_events[2023-12-02 14:37-C10] PASSED [ 86%]
+tests/test_integrate.py::test_nearest_city_of_known_events[2022-07-27 00:43-C04] PASSED [ 89%]
+tests/test_integrate.py::test_nearest_city_of_known_events[2021-07-23 20:49-C01] PASSED [ 93%]
+tests/test_integrate.py::test_bad_rows_are_set_aside PASSED              [ 96%]
+tests/test_pipeline.py::test_run_twice_gives_the_same_numbers PASSED     [100%]
+
+============================= 29 passed in 4.44s ==============================

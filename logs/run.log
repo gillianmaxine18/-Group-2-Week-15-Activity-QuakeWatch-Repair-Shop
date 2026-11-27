@@ -1,0 +1,4 @@
+2026-11-28 03:01:38,150 INFO quakewatch: acquire: 0 new rows
+2026-11-28 03:01:38,221 INFO quakewatch: integrate: 462 raw, 0 rejected, 462 clean
+2026-11-28 03:01:38,240 INFO quakewatch: features: 462 rows, 42 Strong or above, 247 bursts
+2026-11-28 03:01:38,563 INFO quakewatch: report: wrote figures\dashboard.png
